@@ -1,4 +1,4 @@
-import { ICar, ICarDTO } from "../../../../interfaces/ICar";
+import { ICar, ICarDTO } from "../../interfaces/ICar";
 
 const carMock: ICar = {
   model: "Fusca",
@@ -19,4 +19,13 @@ const carMockWithId: ICarDTO = {
   seatsQty: 4,
 };
 
-export { carMock, carMockWithId };
+const carMockWithWrongTypes = {
+  model: 1975,
+  year: "Fusca",
+  color: 12500,
+  buyValue: "immeasurable",
+  doorsQty: true,
+  seatsQty: true,
+}
+
+export { carMock, carMockWithId, carMockWithWrongTypes };

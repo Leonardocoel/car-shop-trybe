@@ -13,6 +13,10 @@ describe("Car Model", () => {
     sinon.stub(Model, "create").resolves(carMockWithId);
   });
 
+  after(() => {
+    sinon.restore();
+  });
+
   describe("add new car", () => {
     it("when the attributes are correct a new car is returned", async () => {
       const newCar = await carModel.create(carMock);
