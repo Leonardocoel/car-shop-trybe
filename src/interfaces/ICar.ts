@@ -8,5 +8,9 @@ const carZodSchema = vehicleZodSchema.extend({
 
 type ICar = z.infer<typeof carZodSchema>;
 
+interface ICarDTO extends ICar {
+  _id: string
+}
+
 export default carZodSchema;
-export { ICar };
+export { ICar, ICarDTO };
