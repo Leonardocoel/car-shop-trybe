@@ -6,5 +6,6 @@ const router = Router();
 const carController = CarControllerFactory.make();
 
 router.post('/', ExpressAdapter.adapt(carController, 'create'));
+router.get('/', ExpressAdapter.adapt(carController, 'findAll'));
 
 export default router;
