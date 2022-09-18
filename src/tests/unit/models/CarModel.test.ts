@@ -4,14 +4,14 @@ const { expect } = chai;
 
 import CarModel from "../../../models/Car";
 import { Model } from "mongoose";
-import { allCarsMock, carMock, carMockWithId } from "../../mocks/carMock";
+import { allCarsMockWithId, carMock, carMockWithId } from "../../mocks/carMock";
 
 describe("Car Model", () => {
   const carModel = new CarModel();
 
   before(() => {
     sinon.stub(Model, "create").resolves(carMockWithId);
-    sinon.stub(Model, "find").resolves(allCarsMock)
+    sinon.stub(Model, "find").resolves(allCarsMockWithId)
   });
 
   after(() => {
@@ -28,7 +28,7 @@ describe("Car Model", () => {
   describe("find all cars", () => {
     it("when there are cars, return full list", async () => {
       const allCars = await carModel.read();
-      expect(allCars).to.be.eql(allCarsMock)
+      expect(allCars).to.be.eql(allCarsMockWithId)
     });
   });
 });
