@@ -17,4 +17,13 @@ export default class CarController implements IController {
       body: newCar,
     };
   }
+
+  async findAll(): Promise<IResponse> {
+    const allCars = await this.carService.findAll();
+
+    return {
+      status: 200,
+      body: allCars,
+    };
+  }
 }

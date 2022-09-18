@@ -10,5 +10,6 @@ export type IResponse = {
 };
 
 export interface IController {
-  create(req: IRequest): Promise<IResponse>
+  create(req: IRequest): Promise<IResponse>;
+  findAll(): Promise<IResponse>;
 }
