@@ -4,13 +4,14 @@ const { expect } = chai;
 
 import CarModel from "../../../models/Car";
 import { Model } from "mongoose";
-import { carMock, carMockWithId } from "../../mocks/carMock";
+import { allCarsMock, carMock, carMockWithId } from "../../mocks/carMock";
 
 describe("Car Model", () => {
   const carModel = new CarModel();
 
   before(() => {
     sinon.stub(Model, "create").resolves(carMockWithId);
+    sinon.stub(Model, "find").resolves(allCarsMock)
   });
 
   after(() => {
@@ -24,8 +25,10 @@ describe("Car Model", () => {
     });
   });
 
-  // describe('', () => {
-
-  //   it('', async () => {});
-  // })
+  describe("find all cars", () => {
+    it("when there are cars, return full list", async () => {
+      const allCars = await carModel.read();
+      expect(allCars).to.be.eql(allCarsMock)
+    });
+  });
 });

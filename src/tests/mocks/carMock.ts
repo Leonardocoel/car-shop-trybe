@@ -1,6 +1,6 @@
 import { ICar, ICarDTO } from "../../interfaces/ICar";
 
-const carMock: ICar = {
+export const carMock: ICar = {
   model: "Fusca",
   year: 1975,
   color: "White",
@@ -9,7 +9,7 @@ const carMock: ICar = {
   seatsQty: 4,
 };
 
-const carMockWithId: ICarDTO = {
+export const carMockWithId: ICarDTO = {
   _id: "6323cdca0e3a749e5a51f4bc",
   model: "Fusca",
   year: 1975,
@@ -19,13 +19,31 @@ const carMockWithId: ICarDTO = {
   seatsQty: 4,
 };
 
-const carMockWithWrongTypes = {
+export const carMockWithWrongTypes = {
   model: 1975,
   year: "Fusca",
   color: 12500,
   buyValue: "immeasurable",
   doorsQty: true,
   seatsQty: true,
-}
+};
 
-export { carMock, carMockWithId, carMockWithWrongTypes };
+export const allCarsMock = [
+  {
+    model: "Fusca",
+    year: 1975,
+    color: "White",
+    buyValue: 12500,
+    doorsQty: 2,
+    seatsQty: 4,
+  },
+  {
+    model: "Ferrari Maranello",
+    year: 1963,
+    color: "red",
+    buyValue: 3500000,
+    seatsQty: 2,
+    doorsQty: 2,
+  },
+];
+
