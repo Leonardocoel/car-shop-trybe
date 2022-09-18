@@ -16,4 +16,8 @@ export default class CarsService implements IService<ICar> {
 
     return await this.carModel.create(parsed.data) as ICarDTO;
   }
+
+  public async findAll(): Promise<ICarDTO[]> {
+    return await this.carModel.read() as ICarDTO[];
+  }
 }
