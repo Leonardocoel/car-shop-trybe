@@ -11,7 +11,12 @@ describe("Car Service", () => {
   const carService = new CarsService(carModel);
 
   before(() => {
-    sinon.stub(carModel, "update").resolves(carMockWithIdUp);
+    sinon
+      .stub(carModel, "update")
+      .onCall(0)
+      .resolves(null)
+      .onCall(1)
+      .resolves(carMockWithIdUp);
   });
 
   after(() => {
@@ -19,6 +24,15 @@ describe("Car Service", () => {
   });
 
   describe("update car by id", () => {
+    it("when no car is found, return error message ", async () => {
+      let error;
+      try {
+        await carService.updateCarById(carMockWithId._id, carMockUp);
+      } catch (err: any) {
+        error = err;
+      }
+      expect(error.message).to.be.eql("Object not found");
+    });
     it("when a car is updated, return it", async () => {
       const car = await carService.updateCarById(carMockWithId._id, carMockUp);
 
