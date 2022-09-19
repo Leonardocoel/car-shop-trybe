@@ -74,7 +74,7 @@ describe("Car Controller", () => {
       req.params = { id: carMockWithId._id };
       const car = await carController.deleteById(req);
 
-      expect(car).to.be.eql({ status: 200, body: carMockWithId });
+      expect(car).to.be.eql({ status: 204 });
     });
   });
 });
