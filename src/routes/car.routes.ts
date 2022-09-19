@@ -8,5 +8,6 @@ const carController = CarControllerFactory.make();
 router.post('/', ExpressAdapter.adapt(carController, 'create'));
 router.get('/', ExpressAdapter.adapt(carController, 'findAll'));
 router.get('/:id', ExpressAdapter.adapt(carController, 'findById'));
+router.put('/:id', ExpressAdapter.adapt(carController, 'updateById'));
 
 export default router;

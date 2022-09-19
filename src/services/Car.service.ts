@@ -30,6 +30,8 @@ export default class CarsService implements IService<ICar> {
   }
 
   public async updateCarById(id: string, obj: ICar): Promise<ICarDTO> {
+    if (Object.keys(obj).length < 1) throw new CustomError(errorCatalog.Empty);
+
     const updatedCar = await this.carModel.update(id, obj);
 
     if (!updatedCar) throw new CustomError(errorCatalog.NotFound);
