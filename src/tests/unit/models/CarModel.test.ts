@@ -11,7 +11,8 @@ describe("Car Model", () => {
 
   before(() => {
     sinon.stub(Model, "create").resolves(carMockWithId);
-    sinon.stub(Model, "find").resolves(allCarsMockWithId)
+    sinon.stub(Model, "find").resolves(allCarsMockWithId);
+    sinon.stub(Model, 'findById').resolves(carMockWithId);
   });
 
   after(() => {
@@ -31,4 +32,19 @@ describe("Car Model", () => {
       expect(allCars).to.be.eql(allCarsMockWithId)
     });
   });
+
+  describe('find car by id', () => {
+    it('when _id is invalid, return message error',async () => {
+      try {
+        await carModel.readOne('invalidID');
+      } catch (error: any) {
+        expect(error.message).to.be.equal('Id must have 24 hexadecimal characters')
+      }
+    });
+
+    it('when car is found, return it', async () => {
+      const car = await carModel.readOne('6323cdca0e3a749e5a51f4bc')
+      expect(car).to.be.equal(carMockWithId)
+    })
+  })
 });
