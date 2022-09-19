@@ -60,7 +60,7 @@ describe("Car Model", () => {
   describe("update car by id", () => {
     it("when _id is invalid, return message error", async () => {
       try {
-        await carModel.readOne("invalidID");
+        await carModel.update("invalidID", {} as any);
       } catch (error: any) {
         expect(error.message).to.be.equal(
           "Id must have 24 hexadecimal characters"
@@ -71,6 +71,26 @@ describe("Car Model", () => {
     it("when a car is updated, return it", async () => {
       const car = await carModel.update(carMockWithId._id, carMockUp);
       expect(car).to.be.equal(carMockWithIdUp);
+    });
+  });
+
+  describe("delete car by id", () => {
+    it("when _id is invalid, return message error", async () => {
+      try {
+        await carModel.delete("invalidID");
+      } catch (error: any) {
+        expect(error.message).to.be.equal(
+          "Id must have 24 hexadecimal characters"
+        );
+      }
+    });
+
+    it("when a car is deleted, return it", async () => {
+      const ModelStub = sinon.stub(Model, "findByIdAndDelete").resolves();
+      await carModel.delete(carMockWithId._id);
+
+      expect(ModelStub.calledWith( carMockWithId._id)).to.be.true
+
     });
   });
 });

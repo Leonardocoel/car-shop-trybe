@@ -27,6 +27,9 @@ export default abstract class MongoModel<T> implements IModel<T> {
 
   public async delete(id: string): Promise<T | null> {
     if (!isValidObjectId(id)) throw new CustomError(errorCatalog.InvalidMongoId);
-    return this.model.findOneAndRemove({ id });
+
+    await this.model.findByIdAndDelete(id);
+
+    return null;
   }
 }
