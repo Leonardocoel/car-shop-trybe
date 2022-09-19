@@ -14,4 +14,5 @@ export interface IController {
   findAll(): Promise<IResponse>;
   findById(req: IRequest): Promise<IResponse>;
   updateById(req: IRequest): Promise<IResponse>;
+  deleteById(req: IRequest): Promise<IResponse>;
 }

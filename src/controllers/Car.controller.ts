@@ -50,7 +50,7 @@ export default class CarController implements IController {
     };
   }
 
-  async deleteById(req: IRequest): Promise<Omit<IResponse, 'body'>> {
+  async deleteById(req: IRequest): Promise<IResponse> {
     const { id } = req.params as IRequest & { id: string };
     const carInfo = req.body;
 
@@ -58,6 +58,7 @@ export default class CarController implements IController {
 
     return {
       status: 204,
+      body: {},
     };
   }
 }
