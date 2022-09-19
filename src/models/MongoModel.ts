@@ -28,8 +28,8 @@ export default abstract class MongoModel<T> implements IModel<T> {
   public async delete(id: string): Promise<T | null> {
     if (!isValidObjectId(id)) throw new CustomError(errorCatalog.InvalidMongoId);
 
-    await this.model.findByIdAndDelete(id);
+    const deletedCar = await this.model.findByIdAndDelete(id);
 
-    return null;
+    return deletedCar;
   }
 }

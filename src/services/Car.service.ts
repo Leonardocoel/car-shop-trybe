@@ -38,4 +38,10 @@ export default class CarsService implements IService<ICar> {
 
     return updatedCar as ICarDTO;
   }
+
+  public async deleteCarById(id: string): Promise<void> {
+    const deletedCar = await this.carModel.delete(id);
+
+    if (!deletedCar) throw new CustomError(errorCatalog.NotFound);
+  }
 }
