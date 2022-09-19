@@ -28,6 +28,13 @@ export default class CarController implements IController {
   }
 
   async findById(req: IRequest): Promise<IResponse> {
-    throw new Error('a');
+    const { id } = req.params as IRequest & { id: string };
+
+    const car = await this.carService.findCarById(id);
+
+    return {
+      status: 200,
+      body: car,
+    };
   }
 }

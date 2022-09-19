@@ -18,6 +18,7 @@ describe("Car Controller", () => {
   before(async () => {
     sinon.stub(carService, "create").resolves(carMockWithId);
     sinon.stub(carService, "findAll").resolves(allCarsMockWithId);
+    sinon.stub(carService, "findCarById").resolves(carMockWithId);
   });
 
   after(() => {

@@ -7,11 +7,7 @@ export type ErrorResponseObject = {
 
 export type ErrorTypes = 'Empty' | 'InvalidMongoId' | 'NotFound';
 
-type ErrorCatalog = {
-  [type in ErrorTypes]: ErrorResponseObject;
-};
-
-const errorCatalog: ErrorCatalog = {
+const errorCatalog: Record<ErrorTypes, ErrorResponseObject> = {
   Empty: {
     message: 'Fields cannot be empty',
     httpStatus: HttpStatus.BAD_REQUEST,
