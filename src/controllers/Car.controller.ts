@@ -37,4 +37,8 @@ export default class CarController implements IController {
       body: car,
     };
   }
+
+  async updateById(req: IRequest): Promise<IResponse> {
+    throw new Error('Method not implemented.');
+  }
 }

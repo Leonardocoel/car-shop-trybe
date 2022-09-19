@@ -13,4 +13,5 @@ export interface IController {
   create(req: IRequest): Promise<IResponse>;
   findAll(): Promise<IResponse>;
   findById(req: IRequest): Promise<IResponse>;
+  updateById(req: IRequest): Promise<IResponse>;
 }
