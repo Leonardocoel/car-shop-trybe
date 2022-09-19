@@ -29,7 +29,11 @@ export default class CarsService implements IService<ICar> {
     return car;
   }
 
-  public async updateCarById(id: string, obj: unknown): Promise<ICarDTO> {
-    throw new Error('Method not implemented.');
+  public async updateCarById(id: string, obj: ICar): Promise<ICarDTO> {
+    const updatedCar = await this.carModel.update(id, obj);
+
+    if (!updatedCar) throw new CustomError(errorCatalog.NotFound);
+
+    return updatedCar as ICarDTO;
   }
 }
