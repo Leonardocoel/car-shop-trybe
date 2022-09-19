@@ -7,7 +7,7 @@ export default class CarsService implements IService<ICar> {
   constructor(
     private carModel: IModel<ICar>,
   ) {}
-
+  
   public async create(obj: ICar): Promise<ICarDTO> {
     if (Object.keys(obj).length < 1) throw new CustomError(errorCatalog.Empty);
     const parsed = carZodSchema.safeParse(obj);
@@ -27,5 +27,9 @@ export default class CarsService implements IService<ICar> {
     if (!car) throw new CustomError(errorCatalog.NotFound);
 
     return car;
+  }
+
+  public async updateCarById(id: string, obj: unknown): Promise<ICarDTO> {
+    throw new Error('Method not implemented.');
   }
 }
