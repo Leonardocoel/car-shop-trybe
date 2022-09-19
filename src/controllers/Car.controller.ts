@@ -26,4 +26,8 @@ export default class CarController implements IController {
       body: allCars,
     };
   }
+
+  async findById(req: IRequest): Promise<IResponse> {
+    throw new Error('a');
+  }
 }

@@ -38,7 +38,7 @@ describe("Car Service", () => {
     });
   });
 
-  describe("read one car", () => {
+  describe("find car by id", () => {
     it("when no car is found, return error message ", async () => {
       let error;
       try {

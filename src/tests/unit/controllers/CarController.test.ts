@@ -34,11 +34,19 @@ describe("Car Controller", () => {
   });
 
   describe("find all cars", () => {
-    it("when there are cars, return full list",async () => {
-      
+    it("when there are cars, return full list", async () => {
       const allCars = await carController.findAll();
-      
-      expect(allCars).to.be.eql({status: 200, body: allCarsMockWithId});
-    })
+
+      expect(allCars).to.be.eql({ status: 200, body: allCarsMockWithId });
+    });
+  });
+
+  describe("find car by id", () => {
+    it("when a car is found, return it", async () => {
+      req.params = {id: carMockWithId._id}
+      const car = await carController.findById(req)
+
+      expect(car).to.be.eql({ status: 200, body: carMockWithId})
+    });
   });
 });
