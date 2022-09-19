@@ -5,7 +5,7 @@ export type ErrorResponseObject = {
   httpStatus: HttpStatus;
 };
 
-export type ErrorTypes = 'Empty' | 'InvalidMongoId';
+export type ErrorTypes = 'Empty' | 'InvalidMongoId' | 'NotFound';
 
 type ErrorCatalog = {
   [type in ErrorTypes]: ErrorResponseObject;
@@ -18,6 +18,10 @@ const errorCatalog: ErrorCatalog = {
   },
   InvalidMongoId: {
     message: 'Id must have 24 hexadecimal characters',
+    httpStatus: HttpStatus.BAD_REQUEST,
+  },
+  NotFound: {
+    message: 'Object not found',
     httpStatus: HttpStatus.BAD_REQUEST,
   },
 };

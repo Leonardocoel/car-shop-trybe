@@ -20,4 +20,8 @@ export default class CarsService implements IService<ICar> {
   public async findAll(): Promise<ICarDTO[]> {
     return await this.carModel.read() as ICarDTO[];
   }
+
+  public async findCarById(id: string): Promise<ICarDTO> {
+    throw new Error('Method not implemented.');
+  }
 }

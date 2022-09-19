@@ -43,7 +43,7 @@ describe("Car Model", () => {
     });
 
     it('when car is found, return it', async () => {
-      const car = await carModel.readOne('6323cdca0e3a749e5a51f4bc')
+      const car = await carModel.readOne(carMockWithId._id)
       expect(car).to.be.equal(carMockWithId)
     })
   })
