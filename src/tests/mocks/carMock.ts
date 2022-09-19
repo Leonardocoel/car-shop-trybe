@@ -9,6 +9,15 @@ export const carMock: ICar = {
   seatsQty: 4,
 };
 
+export const carMockUp: ICar = {
+  model: "Fusca AZUL",
+  year: 1975,
+  color: "Blue",
+  buyValue: 15000,
+  doorsQty: 2,
+  seatsQty: 4,
+}
+
 export const carMockWithId: ICarDTO = {
   _id: "6323cdca0e3a749e5a51f4bc",
   model: "Fusca",
@@ -18,6 +27,17 @@ export const carMockWithId: ICarDTO = {
   doorsQty: 2,
   seatsQty: 4,
 };
+
+export const carMockWithIdUp: ICarDTO = {
+  _id: "6323cdca0e3a749e5a51f4bc",
+  model: "Fusca AZUL",
+  year: 1975,
+  color: "Blue",
+  buyValue: 15000,
+  doorsQty: 2,
+  seatsQty: 4,
+};
+
 
 export const carMockWithWrongTypes = {
   model: 1975,

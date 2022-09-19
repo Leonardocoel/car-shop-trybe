@@ -4,7 +4,13 @@ const { expect } = chai;
 
 import CarModel from "../../../models/Car";
 import { Model } from "mongoose";
-import { allCarsMockWithId, carMock, carMockWithId } from "../../mocks/carMock";
+import {
+  allCarsMockWithId,
+  carMock,
+  carMockUp,
+  carMockWithId,
+  carMockWithIdUp,
+} from "../../mocks/carMock";
 
 describe("Car Model", () => {
   const carModel = new CarModel();
@@ -12,7 +18,8 @@ describe("Car Model", () => {
   before(() => {
     sinon.stub(Model, "create").resolves(carMockWithId);
     sinon.stub(Model, "find").resolves(allCarsMockWithId);
-    sinon.stub(Model, 'findById').resolves(carMockWithId);
+    sinon.stub(Model, "findById").resolves(carMockWithId);
+    sinon.stub(Model, "findByIdAndUpdate").resolves(carMockWithIdUp);
   });
 
   after(() => {
@@ -29,22 +36,41 @@ describe("Car Model", () => {
   describe("find all cars", () => {
     it("when there are cars, return full list", async () => {
       const allCars = await carModel.read();
-      expect(allCars).to.be.eql(allCarsMockWithId)
+      expect(allCars).to.be.eql(allCarsMockWithId);
     });
   });
 
-  describe('find car by id', () => {
-    it('when _id is invalid, return message error',async () => {
+  describe("find car by id", () => {
+    it("when _id is invalid, return message error", async () => {
       try {
-        await carModel.readOne('invalidID');
+        await carModel.readOne("invalidID");
       } catch (error: any) {
-        expect(error.message).to.be.equal('Id must have 24 hexadecimal characters')
+        expect(error.message).to.be.equal(
+          "Id must have 24 hexadecimal characters"
+        );
       }
     });
 
-    it('when a car is found, return it', async () => {
-      const car = await carModel.readOne(carMockWithId._id)
-      expect(car).to.be.equal(carMockWithId)
-    })
-  })
+    it("when a car is found, return it", async () => {
+      const car = await carModel.readOne(carMockWithId._id);
+      expect(car).to.be.equal(carMockWithId);
+    });
+  });
+
+  describe("update car by id", () => {
+    it("when _id is invalid, return message error", async () => {
+      try {
+        await carModel.readOne("invalidID");
+      } catch (error: any) {
+        expect(error.message).to.be.equal(
+          "Id must have 24 hexadecimal characters"
+        );
+      }
+    });
+
+    it("when a car is updated, return it", async () => {
+      const car = await carModel.update(carMockWithId._id, carMockUp);
+      expect(car).to.be.equal(carMockWithIdUp);
+    });
+  });
 });
