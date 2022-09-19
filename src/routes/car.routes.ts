@@ -9,5 +9,6 @@ router.post('/', ExpressAdapter.adapt(carController, 'create'));
 router.get('/', ExpressAdapter.adapt(carController, 'findAll'));
 router.get('/:id', ExpressAdapter.adapt(carController, 'findById'));
 router.put('/:id', ExpressAdapter.adapt(carController, 'updateById'));
+router.delete('/:id', ExpressAdapter.adapt(carController, 'deleteById'));
 
 export default router;
