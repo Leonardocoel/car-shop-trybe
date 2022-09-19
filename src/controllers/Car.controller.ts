@@ -39,6 +39,14 @@ export default class CarController implements IController {
   }
 
   async updateById(req: IRequest): Promise<IResponse> {
-    throw new Error('Method not implemented.');
+    const { id } = req.params as IRequest & { id: string };
+    const carInfo = req.body;
+
+    const updatedCar = await this.carService.updateCarById(id, carInfo);
+
+    return {
+      status: 200,
+      body: updatedCar,
+    };
   }
 }
