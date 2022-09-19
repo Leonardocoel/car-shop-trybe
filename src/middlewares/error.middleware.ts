@@ -10,10 +10,10 @@ const errorMidleware: ErrorRequestHandler = async (error: Error | ZodError, _req
 
   if (error instanceof CustomError) {
     const { httpStatus, message } = error;
-    return res.status(httpStatus).json({ message });
+    return res.status(httpStatus).json({ error: message });
   }
 
-  res.status(500).json({ message: 'Internal Server Error' });
+  res.status(500).json({ error: 'Internal Server Error' });
 };
 
 export default errorMidleware;

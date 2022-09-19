@@ -1,7 +1,7 @@
 import HttpStatus from './httpStatus';
 
 export type ErrorResponseObject = {
-  message: string;
+  error: string;
   httpStatus: HttpStatus;
 };
 
@@ -9,16 +9,16 @@ export type ErrorTypes = 'Empty' | 'InvalidMongoId' | 'NotFound';
 
 const errorCatalog: Record<ErrorTypes, ErrorResponseObject> = {
   Empty: {
-    message: 'Fields cannot be empty',
+    error: 'Fields cannot be empty',
     httpStatus: HttpStatus.BAD_REQUEST,
   },
   InvalidMongoId: {
-    message: 'Id must have 24 hexadecimal characters',
+    error: 'Id must have 24 hexadecimal characters',
     httpStatus: HttpStatus.BAD_REQUEST,
   },
   NotFound: {
-    message: 'Object not found',
-    httpStatus: HttpStatus.BAD_REQUEST,
+    error: 'Object not found',
+    httpStatus: HttpStatus.NOT_FOUND,
   },
 };
 
