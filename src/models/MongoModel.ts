@@ -1,4 +1,5 @@
-import { Model, UpdateQuery } from 'mongoose';
+import { isValidObjectId, Model, UpdateQuery } from 'mongoose';
+import { CustomError, errorCatalog } from '../errors';
 import { IModel } from '../interfaces/IModel';
 
 export default abstract class MongoModel<T> implements IModel<T> {
@@ -15,14 +16,17 @@ export default abstract class MongoModel<T> implements IModel<T> {
   }
 
   public async readOne(id: string): Promise<T | null> {
+    if (!isValidObjectId(id)) throw new CustomError(errorCatalog.InvalidMongoId);
     return this.model.findById(id);
   }
 
   public async update(id: string, obj: T): Promise<T | null> {
+    if (!isValidObjectId(id)) throw new CustomError(errorCatalog.InvalidMongoId);
     return this.model.findByIdAndUpdate(id, obj as UpdateQuery<T>);
   }
 
-  public async delete(_id: string): Promise<T | null> {
-    return this.model.findOneAndRemove({ _id });
+  public async delete(id: string): Promise<T | null> {
+    if (!isValidObjectId(id)) throw new CustomError(errorCatalog.InvalidMongoId);
+    return this.model.findOneAndRemove({ id });
   }
 }

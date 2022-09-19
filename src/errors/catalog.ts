@@ -17,7 +17,7 @@ const errorCatalog: ErrorCatalog = {
     httpStatus: HttpStatus.BAD_REQUEST,
   },
   InvalidMongoId: {
-    message: 'Id must be a 24 characters hexadecimal',
+    message: 'Id must have 24 hexadecimal characters',
     httpStatus: HttpStatus.BAD_REQUEST,
   },
 };
