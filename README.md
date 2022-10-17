@@ -34,6 +34,7 @@
 
 ## About The Project
 
+Project made for Trybe using the principles of the SOLID architecture and the principles of OOP in an API with CRUD to manage a car dealership, using the MongoDB database and the Mongoose ODM, in addition to covering the application with tests using Mocha, Shai and Sinon.
 
 #### Technologies
 
