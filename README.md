@@ -120,7 +120,9 @@
   ```
   npm run test:coverage
   ```
- 
+---
+[⬆ Back to top](#project-car-shop-trybe)<br>
+
 
 <!-- MARKDOWN LINKS & IMAGES -->
 
