@@ -5,6 +5,8 @@
 [![Issues][issues-shield]][issues-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
+![Repo Size][repo-size-shield]
+![Languages][language-count-shield]
 
 <details>
   <summary>Table of Contents</summary>
@@ -141,8 +143,8 @@
 [issues-shield]: https://img.shields.io/github/issues/Leonardocoel/car-shop-trybe?style=for-the-badge
 [issues-url]: https://github.com/Leonardocoel/
 
-[github repo size]: https://img.shields.io/github/repo-size/Leonardocoel/car-shop-trybe.svg?style=for-the-badge
-[github language count]: https://img.shields.io/github/languages/count/Leonardocoel/
+[repo-size-shield]: https://img.shields.io/github/repo-size/Leonardocoel/car-shop-trybe?style=for-the-badge
+[language-count-shield]: https://img.shields.io/github/languages/count/Leonardocoel/car-shop-trybe?style=for-the-badge
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/leonardocoel
